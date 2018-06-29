@@ -1,0 +1,31 @@
+{
+	"initial": [
+		"libs/modules/egret/egret.js",
+		"libs/modules/egret/egret.web.js",
+		"libs/modules/eui/eui.js",
+		"libs/modules/game/game.js",
+		"libs/modules/tween/tween.js",
+		"libs/modules/assetsmanager/assetsmanager.js",
+		"libs/modules/socket/socket.js",
+		"libs/modules/promise/promise.js"
+	],
+	"game": [
+		"bin-debug/main/control/BaseComponent.js",
+		"bin-debug/main/control/BaseWindow.js",
+		"bin-debug/main/control/TestComponent.js",
+		"bin-debug/Platform.js",
+		"bin-debug/bag/BagWindow.js",
+		"bin-debug/GlobalVar.js",
+		"bin-debug/Main.js",
+		"bin-debug/main/control/IWindow.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/main/control/data/WinParam.js",
+		"bin-debug/main/define/AnConst.js",
+		"bin-debug/main/define/EventDefine.js",
+		"bin-debug/main/manager/WindowManager.js",
+		"bin-debug/main/map/MapConfig.js",
+		"bin-debug/main/map/MapData.js",
+		"bin-debug/utils/EventStruct.js",
+		"bin-debug/utils/EventUtil.js"
+	]
+}
