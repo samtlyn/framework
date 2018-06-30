@@ -4,15 +4,16 @@ class BaseWindow extends BaseComponent implements IWindow {
 	}
 	layer:number;
 	private _windowName: string;
-	get windowName():string
-	{	
-		return this._windowName;	
-	}
-
 	set windowName(name:string)
 	{
 		this._windowName = name;
 	}
+	get windowName():string
+	{	
+		return this._windowName;
+	}
+
+
 	private _data:any;
 	protected get data():any
 	{
@@ -27,21 +28,22 @@ class BaseWindow extends BaseComponent implements IWindow {
 
 	}
 
-	displayObj():BaseWindow{
-		return this;
+	get showObj():egret.DisplayObject{
+		return this as egret.DisplayObject;
 	}
 	private closeIcon: eui.Image;
 	private baseBg: eui.Component;
 	protected childrenCreated(): void {
+		
 		super.childrenCreated();
 		if (this.closeIcon)
 			this.closeIcon.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCloseTap, this);
-
+		// console.log("childrenCreated " +this.width + " , "+this.height + " , "+MapConfig.V_WIDTH+" , "+MapConfig.V_HEIGHT);
 		this.x = (MapConfig.V_WIDTH - this.width) / 2;
 		this.y = (MapConfig.V_HEIGHT - this.height) / 2;
 	}
 	show() {
-		// GlobalVar.windowLayer.addChild(this);
+		GlobalVar.windowLayer.addChild(this);
 		// PopupUtil.add(this);
 	}
 	isShow(): boolean {

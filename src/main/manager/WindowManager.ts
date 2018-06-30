@@ -6,7 +6,7 @@ class WindowManager {
 	init()
 	{
 		//监听打开、关闭界面UI事件
-		EventUtil.addEventListener(EventDefine.WIN_SHOW_HIDE,WindowManager.getInstance().onWinShowHide);
+		EventUtil.addEventListener(EventDefine.WIN_SHOW_HIDE,this.onWinShowHide,this);
 	}
 
 	private static _instance:WindowManager;
@@ -45,12 +45,15 @@ class WindowManager {
 	{
 		var win:IWindow = this.getShowWindow(winName);
 		if(win == null){
-			win = egret.getDefinitionByName(winName) as IWindow;
+			var winClz:any  = egret.getDefinitionByName(winName) as IWindow;
+			win = new winClz();
 			this._showList.push(win);
 			
-		 }
-		// GlobalVar.windowLayer.addChild(win as egret.DisplayObject );
+		 }		 
+		
+		
 		win.setShowData(param);
+		win.show();
 	}
 
 	private hideWindow(winName:string)

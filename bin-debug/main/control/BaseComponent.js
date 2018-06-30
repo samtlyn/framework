@@ -21,7 +21,7 @@ var BaseComponent = (function (_super) {
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.onRemoveFromStage, this);
     };
     BaseComponent.prototype.addEvent = function (eventName, func) {
-        var index = EventUtil.addEventListener(eventName, func);
+        var index = EventUtil.addEventListener(eventName, func, this);
         if (index != -1) {
             this.eventList.push({ name: eventName, function: func });
         }

@@ -35,18 +35,25 @@ var BaseWindow = (function (_super) {
     };
     BaseWindow.prototype.dispose = function () {
     };
-    BaseWindow.prototype.displayObj = function () {
-        return this;
-    };
+    Object.defineProperty(BaseWindow.prototype, "showObj", {
+        get: function () {
+            return this;
+        },
+        enumerable: true,
+        configurable: true
+    });
     BaseWindow.prototype.childrenCreated = function () {
         _super.prototype.childrenCreated.call(this);
         if (this.closeIcon)
             this.closeIcon.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onCloseTap, this);
-        this.x = (MapConfig.V_WIDTH - this.width) / 2;
-        this.y = (MapConfig.V_HEIGHT - this.height) / 2;
+        console.log("childrenCreated " + this.width + " , " + this.height + " , " + MapConfig.V_WIDTH + " , " + MapConfig.V_HEIGHT);
+        this.x = 0;
+        this.y = 0;
+        // this.x = (MapConfig.V_WIDTH - this.width) / 2;
+        // this.y = (MapConfig.V_HEIGHT - this.height) / 2;
     };
     BaseWindow.prototype.show = function () {
-        // GlobalVar.windowLayer.addChild(this);
+        GlobalVar.windowLayer.addChild(this);
         // PopupUtil.add(this);
     };
     BaseWindow.prototype.isShow = function () {

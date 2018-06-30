@@ -5,6 +5,10 @@ var EventStruct = (function () {
     function EventStruct() {
         this.isDispose = false;
     }
+    EventStruct.prototype.clean = function () {
+        this.callfunc = null;
+        this.owner = null;
+    };
     return EventStruct;
 }());
 __reflect(EventStruct.prototype, "EventStruct");

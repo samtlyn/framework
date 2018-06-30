@@ -6,7 +6,7 @@ class EventUtil {
 	}
 
 	/*添加全局事件监听*/
-	public static addEventListener(eventName:string,func: Function):number {
+	public static addEventListener(eventName:string,func: Function,owner:any):number {
 		let index:number = -1
 		
 		if(this.event_function[eventName] != null)
@@ -32,6 +32,7 @@ class EventUtil {
 			index =  this.count++;
 			eStruct.key = index;
 			eStruct.callfunc = func;
+			eStruct.owner = owner;
 			eStruct.isDispose = false;
 			eList.push(eStruct);
 		}
@@ -68,7 +69,7 @@ class EventUtil {
 		for(let i:number =0;i< elist.length;i++)
 		{
 			estruct = elist[i];		
-			estruct.callfunc.call(this,param);
+			estruct.callfunc.call(estruct.owner,param);
 		}
 	}
 

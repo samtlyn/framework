@@ -7,7 +7,7 @@ var WindowManager = (function () {
     }
     WindowManager.prototype.init = function () {
         //监听打开、关闭界面UI事件
-        EventUtil.addEventListener(EventDefine.WIN_SHOW_HIDE, WindowManager.getInstance().onWinShowHide);
+        EventUtil.addEventListener(EventDefine.WIN_SHOW_HIDE, this.onWinShowHide, this);
     };
     WindowManager.getInstance = function () {
         if (this._instance == null) {
@@ -35,11 +35,12 @@ var WindowManager = (function () {
     WindowManager.prototype.openWindow = function (winName, param) {
         var win = this.getShowWindow(winName);
         if (win == null) {
-            win = egret.getDefinitionByName(winName);
+            var winClz = egret.getDefinitionByName(winName);
+            win = new winClz();
             this._showList.push(win);
         }
-        // GlobalVar.windowLayer.addChild(win as egret.DisplayObject );
         win.setShowData(param);
+        win.show();
     };
     WindowManager.prototype.hideWindow = function (winName) {
         var win = this.getShowWindow(winName);

@@ -54,7 +54,7 @@ var Main = (function (_super) {
     Main.prototype.onAddToStage = function (event) {
         WindowManager.getInstance();
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchCB, this);
-        EventUtil.addEventListener("SCENE_LOADED", this.onSceneLoaded);
+        EventUtil.addEventListener("SCENE_LOADED", this.onSceneLoaded, this);
         this.testc = new TestComponent();
         this.addChild(this.testc);
         this.createGameScene();

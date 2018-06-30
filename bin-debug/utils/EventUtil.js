@@ -5,7 +5,7 @@ var EventUtil = (function () {
     function EventUtil() {
     }
     /*添加全局事件监听*/
-    EventUtil.addEventListener = function (eventName, func) {
+    EventUtil.addEventListener = function (eventName, func, owner) {
         var index = -1;
         if (this.event_function[eventName] != null) {
             var eventList = this.event_function[eventName];
@@ -26,6 +26,7 @@ var EventUtil = (function () {
             index = this.count++;
             eStruct.key = index;
             eStruct.callfunc = func;
+            eStruct.owner = owner;
             eStruct.isDispose = false;
             eList.push(eStruct);
         }
@@ -54,7 +55,7 @@ var EventUtil = (function () {
         var estruct;
         for (var i = 0; i < elist.length; i++) {
             estruct = elist[i];
-            estruct.callfunc.call(this, param);
+            estruct.callfunc.call(estruct.owner, param);
         }
     };
     /**移除全部事件监听 */

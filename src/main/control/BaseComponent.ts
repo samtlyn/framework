@@ -10,7 +10,7 @@ class BaseComponent extends eui.Component {
 	}
 	protected addEvent(eventName:string,func:Function)
 	{		
-		let index:number = EventUtil.addEventListener(eventName,func);
+		let index:number = EventUtil.addEventListener(eventName,func,this);
 		if(index != -1)
 		{
 			this.eventList.push({name:eventName,function:func});
